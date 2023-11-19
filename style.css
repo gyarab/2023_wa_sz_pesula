@@ -1,0 +1,18 @@
+  .container {
+    width: 25%;
+  }
+  
+  .modre {
+    color:blue;
+    width: 80%;
+  }
+
+  .cervene {
+    color:red;
+    width: 50%;
+  }
+  
+  .zelene {
+    color:green;
+    width: 30%;
+  }
