@@ -12,16 +12,16 @@
             <a href="prvni.html">prvni</a>
             <a href="druhy.html">druhy</a>
             <a href="treti.html">treti</a>
-            <h1>Zkouska propojeni HTML, CSS a JS</h1>
-            <p class="modre">
-                Hypertext Markup Language nebo HTML je v informatice název značkovacího 
-                jazyka používaného pro tvorbu webových stránek, které jsou propojeny hypertextovými 
-                odkazy. HTML je hlavním z jazyků pro vytváření stránek v systému World Wide Web, 
-                který možňuje publikaci dokumentů na Internetu. Dále je možnost obohatit design 
-                stránky pomocí kaskádových stylů (zkratka CSS). Hojně se využívá i skriptovací 
-                jazyk (např. JavaScript), který dělá stránku pro uživatele více uzpůsobilou.
-            </p> 
             
+            <h1>Zkouska propojeni HTML, CSS a JS</h1>
+
+            <p class="modre">
+                Hypertext Markup Language nebo HTML je v informatice název značkovacího jazyka používaného pro tvorbu webových stránek, 
+                které jsou propojeny hypertextovými odkazy. HTML je hlavním z jazyků pro vytváření stránek v systému World Wide Web, který 
+                umožňuje publikaci dokumentů na Internetu. Dále je možnost obohatit design stránky pomocí kaskádových stylů (zkratka CSS). 
+                Hojně se využívá i skriptovací jazyk (např. JavaScript), který dělá stránku pro uživatele více uzpůsobilou.
+            </p>   
+        
             <p class="cervene">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
                 incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas.
@@ -31,15 +31,37 @@
                 imperdiet dui accumsan sit amet nulla facilisi. Laoreet id donec ultrices tincidunt.
                 Arcu cursus euismod quis viverra nibh cras. Sed vulputate mi sit amet.
             </p> 
-           
-           
+
             <p class="zelene">
-                Hypertext Markup Language nebo HTML je v informatice název značkovacího 
-                jazyka používaného pro tvorbu webových stránek, které jsou propojeny hypertextovými 
-                odkazy. HTML je hlavním z jazyků pro vytváření stránek v systému World Wide Web, 
-                který umožňuje publikaci dokumentů na Internetu. Dále je možnost obohatit design 
-                stránky pomocí kaskádových stylů (zkratka CSS). Hojně se využívá i skriptovací 
-                jazyk (např. JavaScript), který dělá stránku pro uživatele více uzpůsobilou.</p> 
+                Hypertext Markup Language nebo HTML je v informatice název značkovacího jazyka používaného pro tvorbu webových stránek, 
+                které jsou propojeny hypertextovými odkazy. HTML je hlavním z jazyků pro vytváření stránek v systému World Wide Web, který 
+                umožňuje publikaci dokumentů na Internetu. Dále je možnost obohatit design stránky pomocí kaskádových stylů (zkratka CSS). 
+                Hojně se využívá i skriptovací jazyk (např. JavaScript), který dělá stránku pro uživatele více uzpůsobilou.
+            </p> 
+
+            <button onclick="zmen();">Zmacni me</button>
+
+            <img src="https://placehold.it/200x100/ff0000" alt="test" style="display: block">
+            <img id="obr02" src="https://placehold.it/200x100/00ff00" alt="test" style="display: none">
+            <img src="https://placehold.it/200x100/0000ff" alt="test" style="display: none">
         </div>
+
+        <script>
+            var otevreno = false;
+
+            function zmen() {
+                const el = document.getElementById("obr02")
+                otevreno = !otevreno
+                console.log(otevreno);
+                console.log(el);
+
+                if (otevreno) {
+                    el.style.display = "block";
+                } else {
+                    el.style.display = "none";
+                }
+            }
+            
+        </script>
     </body>
 </html>
