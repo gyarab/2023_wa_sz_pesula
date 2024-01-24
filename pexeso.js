@@ -1,33 +1,75 @@
-let el = document.getElementById('stav-hry');
-let counter = 5;
+const cards = ['img/car.jpg', 'img/car.jpg', 'img/cat.jpg', 'img/cat.jpg', 'img/dog.jpg', 'img/dog.jpg', 'img/honey.jpg', 'img/honey.jpg', 'img/laptop.jpg', 'img/laptop.jpg', 'img/moon.jpg', 'img/moon.jpg', 'img/planet.jpg', 'img/planet.jpg', 'img/tree.jpg', 'img/tree.jpg'];
+let flippedCards = [];
+let matchedCards = [];
+let cardElements = [];
 
-function mojeFce() {
-    el.innerHTML = counter;
-    counter--;
-    if (counter >= 0) {
-        setTimeout(mojeFce, 1000);
+function createGameBoard() {
+    const gameBoard = document.getElementById('gameBoard');
+    gameBoard.classList.add('card-container');
+   
+    cards.forEach((card, index) => {
+      const cardElement = document.createElement('div');
+      cardElement.classList.add('card');
+      cardElement.dataset.value = card;
+  
+      const frontSide = document.createElement('img');
+      frontSide.src = card;
+      frontSide.style.display = 'none';
+      const backSide = document.createElement('div');
+      backSide.classList.add('back-side');
+  
+      cardElement.appendChild(frontSide);
+      cardElement.appendChild(backSide);
+  
+      cardElement.addEventListener('click', function () {
+        flipCard(this, index);
+      });
+  
+      gameBoard.appendChild(cardElement);
+    });
+}
+ 
+function shuffleCards(cards) {
+    for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    return cards;
+}
+
+function flipCard(card, index) {
+    if (!flippedCards.includes(card) && flippedCards.length < 2) {
+        card.classList.add('flipped');
+        flippedCards.push(card);
+
+        showCardImage(card, index);
+
+        if (flippedCards.length === 2) {
+            checkMatchedCards();
+        }
     }
 }
 
-setTimeout(mojeFce, 1000);
-
-el.innerHTML = "Nová hra";
-
-function createImages() {
-    const clickableImages = document.querySelectorAll('.clickable-image');
-    clickableImages.forEach((clickableImage) => {
-        clickableImage.addEventListener('click', handleClick);
-    });
+function showCardImage(card, index) {
+    const imgElement = card.querySelector('img');
+    imgElement.style.display = 'block';
 }
 
-function handleClick() {
-    const clickedImage = this;
+function checkMatchedCards() {
+    const [card1, card2] = flippedCards;
 
-    clickedImage.src = 'https://www.shutterstock.com/image-photo/exclamation-mark-design-spotlight-on-260nw-2113603313.jpg';
-
-    setTimeout(() => {
-        clickedImage.src = images[parseInt(clickedImage.dataset.index) - 1];
-    }, 1000);
+    if (card1.dataset.value === card2.dataset.value) {
+        matchedCards.push(card1, card2);
+        flippedCards = [];
+    } else {
+        setTimeout(() => {
+            flippedCards.forEach(card => {
+                card.classList.remove('flipped');
+                card.querySelector('img').style.display = 'none';
+            });
+            flippedCards = [];
+        }, 500);
+    }
 }
 
-createImages();
+createGameBoard(shuffleCards(cards));
