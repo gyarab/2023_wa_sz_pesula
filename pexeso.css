@@ -1,9 +1,27 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
 .card {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    flex-basis: 25%;
+    height: 150px;
+    background-color: gray;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .card img {
-    width: 100px;
-    height: 100px;
+    display: none;
 }
